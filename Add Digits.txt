@@ -1,0 +1,24 @@
+//Given an integer num, repeatedly add all its digits until the result has only one digit, and return it.
+
+class Solution 
+{
+public:
+    int addDigits(int num)
+    {
+        int d,v=0;
+        while(num)
+        {
+        d=num%10;
+        v=v+d;
+        num=num/10;
+        }
+       if(v>9)
+       {
+           return addDigits(v);
+       }
+        else
+        {
+            return v;
+        }
+    }
+};
