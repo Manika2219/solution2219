@@ -1,0 +1,32 @@
+class Solution 
+{
+public:
+int binaryGap(int N)
+{
+int count=0;
+int max=0,x=0,a=0;
+
+    while(N)
+    {
+        int b=N&1;
+        a++;
+        if(b==1)
+        {
+            count++;
+            if(count==1)
+            {
+                x=a;
+            }
+            else if(count==2)
+            {
+                if(a-x>max)
+                    max = a-x; 
+                x=a;
+                count=1;
+            }     
+        }
+        N>>=1;
+    }
+    return max;
+}
+};
