@@ -1,0 +1,18 @@
+class Solution
+ {
+public:
+    int findTilt(TreeNode* r)
+    {
+        int sum;
+        return tilt(r, sum);
+    }
+    int tilt(TreeNode* r, int& sum) 
+     {
+        if (!r) return sum = 0;
+        
+        int lsum, rsum;
+        int res = tilt(r->left, lsum) + tilt(r->right, rsum) + abs(lsum - rsum);
+        sum = lsum + rsum + r->val;
+        return res;
+      }
+};
