@@ -1,0 +1,40 @@
+class Solution {
+public:
+    void findCount(TreeNode* root, vector<int> freq, int &ans)
+    {
+        if (root->left == NULL && root->right == NULL)
+        {
+            bool flag = false; 
+            for (int i = 0; i < 10; i++)
+            {
+                if (freq[i] > 0 && freq[i] % 2 == 1 && flag) 
+                    return;
+                if ( !flag && freq[i] > 0 && freq[i] % 2 == 1)
+                    flag = true; 
+            }
+            ans++;
+            return;
+        }
+        if (root->left)
+        {
+            freq[root->left->val]++;  
+            findCount(root->left, freq, ans); 
+            freq[root->left->val]--; 
+        }
+        if (root->right)
+        {
+            freq[root->right->val]++; 
+            findCount(root->right, freq, ans); 
+        }
+        return;
+    }
+    
+    int pseudoPalindromicPaths (TreeNode* root) 
+    {
+        vector<int> freq(10, 0);
+        freq[root->val]++;
+        int ans = 0;
+        findCount(root, freq, ans);
+        return ans;
+    }
+};
