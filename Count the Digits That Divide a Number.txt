@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int countDigits(int num) {
+        int t=num,d,sum=0,c=0;
+       while(t>0)
+       {
+           d=t%10;
+           sum=d;
+
+           if(num%sum==0)
+           {
+               c++;
+           }
+           sum=0;
+           t=t/10;
+       } 
+       return c;
+    }
+};
