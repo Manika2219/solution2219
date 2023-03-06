@@ -1,0 +1,19 @@
+class Solution {
+    public int[] getConcatenation(int[] nums) {
+
+        if(nums.length<1)
+            return nums;
+
+        int ans[]=new int[nums.length*2];
+
+        for(int i=0;i<nums.length*2;i++){
+            if(i<nums.length){
+                ans[i]=nums[i];          //1 2 1
+            }else 
+            {
+                ans[i]=nums[i-nums.length];   // i=3  3-3  i=4  4-3   i=5  5-3 
+            }
+        }
+    return ans;
+    }
+}
