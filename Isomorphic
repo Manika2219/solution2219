@@ -1,0 +1,23 @@
+class Solution {
+public:
+    bool isIsomorphic(string s, string t) {
+        
+        map<char, char>dic1;
+        map<char, char>dic2;
+        int i, flag = 1;
+
+        for(i = 0; i<s.length() && flag; i++){
+
+            if((dic1.count(s[i]) || dic2.count(t[i])) && (dic1[s[i]] != t[i] || dic2[t[i]] != s[i])){
+                flag = 0;  
+            }
+
+            else{
+                dic1[s[i]] = t[i];
+                dic2[t[i]] = s[i]; 
+            }
+        }
+
+        return flag;
+    }
+};
