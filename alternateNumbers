@@ -1,0 +1,17 @@
+vector<int> alternateNumbers(vector<int>&a) {
+
+    vector<int> negs, pos;
+
+    for (int i = 0; i < a.size(); i++) {
+        if (a[i] < 0) negs.push_back(a[i]);
+        else pos.push_back(a[i]);
+    }
+
+    int idx = 1;
+    for (int i = 0; i < negs.size(); i++) {
+        pos.insert(pos.begin() + idx, negs[i]);
+        idx += 2;
+    }
+
+    return pos;
+}
